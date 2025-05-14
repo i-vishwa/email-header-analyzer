@@ -1,12 +1,26 @@
-# Email Header Analyzer
+# Email Header Analyzer - Minor Project
 
-A simple tool to analyze email headers using Python and Gradio.
+A Python + Gradio tool for analyzing raw email headers.  
+Detects spoofing, extracts IPs, and parses sender information.
+
+🔗 **Live Demo**: [Click here](https://email-header-analyzer-11779385448.asia-south1.run.app/)
 
 ## Features
-- Parse and visualize email headers
-- Identify sender, receiver, IPs, and more
-- User-friendly interface with Gradio
+- Extracts `From`, `To`, `Subject`, and `Return-Path`
+- Parses all relay IPs from `Received` headers
+- Detects possible email spoofing
+- Simple Gradio interface
 
-## How to Run
+## Tech Stack
+- Backend: Python
+- UI: Gradio
+- Cloud: Google Cloud Run
+- Containerized with Docker
+
+## How to Deploy
+1. Install [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
+2. Run:
 ```bash
-python app.py
+gcloud init
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/email-header-analyzer
+gcloud run deploy ...
